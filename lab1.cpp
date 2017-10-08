@@ -22,11 +22,21 @@ unsigned int factorial( unsigned int number ) {
 
 // Quadratic equation. Plus only.
 double quadratic(int a, int b, int c);
-
+{
+    return ((-b + sqrt(b^2-4*a*c))/(2*a))
+}
 
 // Greatest Common Divisor (GCD).
 double gcd(int number1, int number2);
-
+{//For the sake of time, we are using code written by an outside source, and will write tests for that.
+ //Source is: https://codereview.stackexchange.com/questions/66711/greatest-common-divisor
+   double gcd;
+   for(double i=1;i<=number1&&i<=number2;i++){
+    if(number1%i==0 && number2%i == 0 )
+        gcd=i;
+   }
+   return gcd;
+}
 
 // Babylonian Algorithm for square root.
 // Absolute C++ Ch3 PP14
@@ -55,3 +65,6 @@ TEST_CASE( "Factorials are computed", "[factorial]" ) {
     REQUIRE( factorial(10) == 3628800 );
 }
 
+TEST_CASE( "Quadratics are computed", "[quadratic]") {
+    REQUIRE( )
+}
