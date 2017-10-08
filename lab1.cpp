@@ -1,6 +1,6 @@
 //=======================================================
 // Name: lab1.cpp
-// Author: ?
+// Author: PatrickDunphy NickPerry
 // Course: CPTR245
 // Assignment: Lab 1
 // Description: Write the test cases and math expressions.
