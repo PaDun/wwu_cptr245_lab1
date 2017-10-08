@@ -20,7 +20,7 @@ unsigned int factorial( unsigned int number ) {
     return number <= 1 ? number : factorial(number - 1) * number;
 }
 
-// Quadratic equation.
+// Quadratic equation. Plus only.
 double quadratic(int a, int b, int c);
 
 
