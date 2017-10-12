@@ -10,7 +10,7 @@
 // This tells Catch to provide a main() - only do this in one cpp file
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -23,10 +23,10 @@ unsigned int factorial( unsigned int number ) {
 // Quadratic equation. Plus only.
 double quadratic(int a, int b, int c)
 {
-    if (b^2 <= 4*a*c)
+    if (b^2 < 4*a*c)
         throw invalid_argument("Invalid Inputs");
     if (a == 0)
-        throw invalid_argument("'a' can't be negative")
+        throw invalid_argument("'a' can't be zero")
     return ((-b + sqrt(b^2-4*a*c))/(2*a));
 }
 
@@ -35,7 +35,7 @@ double gcd(int number1, int number2)
 {//For the sake of time, we are using code written by an outside source, and will write tests for that.
  //Source is: https://codereview.stackexchange.com/questions/66711/greatest-common-divisor
    double gcd;
-   for(double i=1;i<=number1&&i<=number2;i++){
+   for(double i=1;i<=sqrt(number1^2)&&i<=sqrt(number2^2);i++){
     if(number1%i==0 && number2%i == 0 )
         gcd=i;
    }
@@ -45,7 +45,9 @@ double gcd(int number1, int number2)
 // Babylonian Algorithm for square root.
 // Absolute C++ Ch3 PP14
 double squareRoot(double value);
-
+{
+    
+}
 
 // Calculate what day of the week corresponds to the date.
 // Absolute C++ Ch3 PP12
@@ -72,10 +74,35 @@ TEST_CASE( "Factorials are computed", "[factorial]" ) {
 TEST_CASE( "Quadratics are computed", "[quadratic]") {
     try
     {
-        quadratic(1, 1, 1)
+       double i = quadratic(1, 1, 1);
     }
     catch (invalid_argument& e)
     {
-        
+        cout << "b^2 < 4ac test passed";
     }
+    try
+    {
+       double i = quadratic(0, 1, 1);
+    }
+    catch (invalid_argument& e)
+    {
+        cout << "a == 0 test passed";
+    }
+    REQUIRE( quadratic(1, 4, 4) == -2);
+    REQUIRE( quadratic(2, 5, 2) == -.5);
+}
+/*double gcd(int number1, int number2)
+{//For the sake of time, we are using code written by an outside source, and will write tests for that.
+ //Source is: https://codereview.stackexchange.com/questions/66711/greatest-common-divisor
+   double gcd;
+   for(double i=1;i<=number1&&i<=number2;i++){
+    if(number1%i==0 && number2%i == 0 )
+        gcd=i;
+   }
+   return gcd;
+}
+*/
+TEST_CASE( "GCD is found between 2 numbers", "[gcd]")
+{
+    
 }
