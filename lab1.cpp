@@ -21,13 +21,17 @@ unsigned int factorial( unsigned int number ) {
 }
 
 // Quadratic equation. Plus only.
-double quadratic(int a, int b, int c);
+double quadratic(int a, int b, int c)
 {
-    return ((-b + sqrt(b^2-4*a*c))/(2*a))
+    if (b^2 <= 4*a*c)
+        throw invalid_argument("Invalid Inputs");
+    if (a == 0)
+        throw invalid_argument("'a' can't be negative")
+    return ((-b + sqrt(b^2-4*a*c))/(2*a));
 }
 
 // Greatest Common Divisor (GCD).
-double gcd(int number1, int number2);
+double gcd(int number1, int number2)
 {//For the sake of time, we are using code written by an outside source, and will write tests for that.
  //Source is: https://codereview.stackexchange.com/questions/66711/greatest-common-divisor
    double gcd;
@@ -66,5 +70,12 @@ TEST_CASE( "Factorials are computed", "[factorial]" ) {
 }
 
 TEST_CASE( "Quadratics are computed", "[quadratic]") {
-    REQUIRE( )
+    try
+    {
+        quadratic(1, 1, 1)
+    }
+    catch (invalid_argument& e)
+    {
+        
+    }
 }
