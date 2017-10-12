@@ -32,7 +32,7 @@ double quadratic(int a, int b, int c)
 
 // Greatest Common Divisor (GCD).
 double gcd(int number1, int number2)
-{//For the sake of time, we are using code written by an outside source, and will write tests for that.
+{//For the sake of time, we are using code partially written by an outside source, and will write tests for that.
  //Source is: https://codereview.stackexchange.com/questions/66711/greatest-common-divisor
    double gcd;
    for(double i=1;i<=sqrt(number1^2)&&i<=sqrt(number2^2);i++){
@@ -104,5 +104,6 @@ TEST_CASE( "Quadratics are computed", "[quadratic]") {
 */
 TEST_CASE( "GCD is found between 2 numbers", "[gcd]")
 {
+    REQUIRE( gcd(8, 16) == 8);
     
 }
