@@ -53,6 +53,14 @@ double squareRoot(double value);
     if (value < 0)
         throw invalid_argument("Can't square root a negative");
     double guess = 1;
+    double ans;
+    while (true)
+    {
+        ans = (guess + (value / guess)) / 2;
+        if (ans >= guess-.0000000001 && ans <= guess+.0000000001)
+            return ans;
+        guess = ans;
+    }
     
 }
 
@@ -117,4 +125,33 @@ TEST_CASE( "GCD is found between 2 numbers", "[gcd]")
 {
     REQUIRE( gcd(-8, 16) == 8);
     REQUIRE( gcd(3, 16) == 1);
+}
+/*
+double squareRoot(double value);
+{
+    if (value < 0)
+        throw invalid_argument("Can't square root a negative");
+    double guess = 1;
+    double ans;
+    while (true)
+    {
+        ans = (guess + (value / guess)) / 2;
+        if (ans >= guess-.0000000001 && ans <= guess+.0000000001)
+            return ans;
+        guess = ans;
+    }
+    
+}
+*/
+TEST_CASE( "Square root is determined using babylonian algorithm", "[squareRoot]")
+{
+    try 
+    {
+        double i = squareRoot(-5);
+    }
+    catch (invalid_argument& e)
+    {
+        cout << "value < 0 test passed";
+    }
+    REQUIRE( squareRoot(4) >= 1.999999 && squareRoot(4) <= 2.000001);
 }
