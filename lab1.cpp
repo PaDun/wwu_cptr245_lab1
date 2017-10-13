@@ -35,7 +35,11 @@ double gcd(int number1, int number2)
 {//For the sake of time, we are using code partially written by an outside source, and will write tests for that.
  //Source is: https://codereview.stackexchange.com/questions/66711/greatest-common-divisor
    double gcd;
-   for(double i=1;i<=sqrt(number1^2)&&i<=sqrt(number2^2);i++){
+     if (number1 < 0)
+        number1 = 0 - number1;
+     if (number2 < 0)
+        number2 = 0 - number2;
+   for(double i=1;i<=number1&&i<=number2;i++){
     if(number1%i==0 && number2%i == 0 )
         gcd=i;
    }
@@ -46,6 +50,9 @@ double gcd(int number1, int number2)
 // Absolute C++ Ch3 PP14
 double squareRoot(double value);
 {
+    if (value < 0)
+        throw invalid_argument("Can't square root a negative");
+    double guess = 1;
     
 }
 
@@ -54,7 +61,7 @@ double squareRoot(double value);
 string dayOfTheWeek(int month, int day, int year);
 
 
-// Find the student's Frist and Last Name and calculate the CS username
+// Find the student's First and Last Name and calculate the CS username
 // Username criteria
 //  - First 4 characters of Last Name
 //  - If last name < 4, fill characters from first name.
@@ -92,9 +99,13 @@ TEST_CASE( "Quadratics are computed", "[quadratic]") {
     REQUIRE( quadratic(2, 5, 2) == -.5);
 }
 /*double gcd(int number1, int number2)
-{//For the sake of time, we are using code written by an outside source, and will write tests for that.
+{//For the sake of time, we are using code partially written by an outside source, and will write tests for that.
  //Source is: https://codereview.stackexchange.com/questions/66711/greatest-common-divisor
    double gcd;
+     if (number1 < 0)
+        number1 = 0 - number1;
+     if (number2 < 0)
+        number2 = 0 - number2;
    for(double i=1;i<=number1&&i<=number2;i++){
     if(number1%i==0 && number2%i == 0 )
         gcd=i;
@@ -104,6 +115,6 @@ TEST_CASE( "Quadratics are computed", "[quadratic]") {
 */
 TEST_CASE( "GCD is found between 2 numbers", "[gcd]")
 {
-    REQUIRE( gcd(8, 16) == 8);
-    
+    REQUIRE( gcd(-8, 16) == 8);
+    REQUIRE( gcd(3, 16) == 1);
 }
