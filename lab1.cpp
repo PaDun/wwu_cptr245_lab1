@@ -26,7 +26,7 @@ double quadratic(int a, int b, int c)
     if (b^2 < 4*a*c)
         throw invalid_argument("Invalid Inputs");
     if (a == 0)
-        throw invalid_argument("'a' can't be zero")
+        throw invalid_argument("'a' can't be zero");
     return ((-b + sqrt(b^2-4*a*c))/(2*a));
 }
 
@@ -48,7 +48,7 @@ double gcd(int number1, int number2)
 
 // Babylonian Algorithm for square root.
 // Absolute C++ Ch3 PP14
-double squareRoot(double value);
+double squareRoot(double value)
 {
     if (value < 0)
         throw invalid_argument("Can't square root a negative");
