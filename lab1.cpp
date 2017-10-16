@@ -39,7 +39,7 @@ double gcd(int number1, int number2)
         number1 = 0 - number1;
      if (number2 < 0)
         number2 = 0 - number2;
-   for(double i=1;i<=number1&&i<=number2;i++){
+   for(int i=1;i<=number1&&i<=number2;i++){
     if(number1%i==0 && number2%i == 0 )
         gcd=i;
    }
