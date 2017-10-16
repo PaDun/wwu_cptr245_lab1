@@ -153,5 +153,6 @@ TEST_CASE( "Square root is determined using babylonian algorithm", "[squareRoot]
     {
         cout << "value < 0 test passed";
     }
-    REQUIRE( squareRoot(4) >= 1.999999 && squareRoot(4) <= 2.000001);
+    REQUIRE( squareRoot(4) >= 1.999999);
+    REQUIRE( squareRoot(4) <= 2.000001);
 }
